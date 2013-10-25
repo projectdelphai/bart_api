@@ -16,3 +16,10 @@ class BartApi():
     train_count = xml.xpath('traincount')[0].text
     return train_count
 
+  def elevator_status(self):
+    url = "http://api.bart.gov/api/bsa.aspx?cmd=elev&key=%s" % (self.api_key)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    train_count = xml.xpath('bsa')[0].xpath('description')[0].text
+    return train_count
+

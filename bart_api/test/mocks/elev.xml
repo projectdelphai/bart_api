@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/bsa.aspx?cmd=elev ]]></uri> 
+  <date>10/14/2009</date> 
+  <time>15:57:00 PM PDT</time> 
+  <bsa>
+    <description><![CDATA[ Attention passengers: All elevators are in service. Thank You. ]]></description>
+    <sms_text><![CDATA[ ALL ELEVS ARE IN SVC. ]]></sms_text>
+  </bsa>
+  <message /> 
+</root>
