@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/bsa.aspx?cmd=count ]]></uri> 
+  <date>10/14/2009</date> 
+  <time>15:52:00 PM PDT</time> 
+  <traincount>51</traincount> 
+  <message /> 
+</root>
