@@ -80,11 +80,9 @@ To run the tests to make sure everything is running well, run this command in th
 
 Todo
 -----------------
-* make method for delays
-* make method for stations
-* make method for arrival/destination estimations
-* make method for routes
-* upload package to pip
+* make methods for schedules
+* figure out best way to parse xml
+* remove duplicate code into a better method
 * seamless development for others
 
 Helping Out
@@ -100,6 +98,9 @@ Helping Out
 
 Changelog
 --------------
+0.0.2
+* made methods for everythin but the schedule section
+
 0.0.1
 * working through advisory information part of api
 * designed structure for tests and packaging
