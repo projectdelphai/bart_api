@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=24th ]]></uri>
+    <stations>
+      <station>
+        <name>24th St. Mission</name> 
+        <abbr>24TH</abbr> 
+        <gtfs_latitude>37.752411</gtfs_latitude> 
+        <gtfs_longitude>-122.418292</gtfs_longitude> 
+        <address>2800 Mission Street</address> 
+        <city>San Francisco</city> 
+        <county>sanfrancisco</county> 
+        <state>CA</state> 
+        <zipcode>94110</zipcode> 
+        <north_routes>
+        <route>ROUTE 2</route> 
+        <route>ROUTE 6</route> 
+        <route>ROUTE 8</route> 
+        <route>ROUTE 12</route> 
+        </north_routes>
+        <south_routes>
+        <route>ROUTE 1</route> 
+        <route>ROUTE 5</route> 
+        <route>ROUTE 7</route> 
+        <route>ROUTE 11</route> 
+        </south_routes>
+        <north_platforms>
+        <platform>2</platform> 
+        </north_platforms>
+        <south_platforms>
+        <platform>1</platform> 
+        </south_platforms>
+        <platform_info>Always check destination signs and listen for departure announcements.</platform_info> 
+        <intro><![CDATA[ "The Mission" refers to the San Francisco de Asis Mission, also known as Mission Dolores, which was founded 1776. Today the neighborhood is host to an eclectic mix of restaurants, markets, performance spaces, shops, and nightspots. ]]></intro>
+        <cross_street><![CDATA[ Nearby Cross: 24th St. ]]></cross_street>
+        <food><![CDATA[ Nearby restaurant reviews from <a rel="external" href="http://www.yelp.com/search?find_desc=Restaurant+&ns=1&rpp=10&find_loc=2800 Mission Street San Francisco, CA 94110">yelp.com</a> ]]></food>
+        <shopping><![CDATA[ Local shopping from <a rel="external"" href="http://www.yelp.com/search?find_desc=Shopping+&ns=1&rpp=10&find_loc=2800 Mission Street San Francisco, CA 94110">yelp.com</a> ]]></shopping>
+        <attraction><![CDATA[ More station area attractions from <a rel="external" href="http://www.yelp.com/search?find_desc=+&ns=1&rpp=10&find_loc=2800 Mission Street San Francisco, CA 94110">yelp.com</a> ]]></attraction>
+        <link>http://www.bart.gov/stations/24TH/index.aspx</link> 
+      </station>
+    </stations>
+  <message /> 
+</root>

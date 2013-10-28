@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/route.aspx?cmd=routes ]]></uri>
+  <sched_num>26</sched_num> 
+  <routes>
+    <route>
+      <name>Pittsburg/Bay Point - SFIA/Millbrae</name> 
+      <abbr>PITT-SFIA</abbr> 
+      <routeID>ROUTE 1</routeID> 
+      <number>1</number> 
+      <color>#ffff33</color> 
+    </route>
+  </routes>
+  <message /> 
+</root>

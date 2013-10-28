@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<root>
+  <uri>
+    <![CDATA[http://api.bart.gov/api/bsa.aspx?cmd=bsa&date=today]]>
+  </uri>
+  <date>08/06/2013</date>
+  <time>11:37:00 AM PDT</time>
+  <bsa>
+    <station>ALL</station>
+    <type>INFORMATION</type>
+    <description><![CDATA[No delays reported.]]></description>
+    <sms_text><![CDATA[No delays reported.]]></sms_text>
+  </bsa>
+  <message></message>
+</root>

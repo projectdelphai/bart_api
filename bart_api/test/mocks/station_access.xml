@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/stn.aspx?cmd=stnaccess&orig=12th&l=1 ]]></uri>
+  <stations>
+    <station parking_flag="0" bike_flag="0" bike_station_flag="0" locker_flag="1">
+      <name>12th St. Oakland City Center</name> 
+      <abbr>12TH</abbr> 
+      <entering><![CDATA[ <p>The BART trains at 12th St. Oakland City Center Station are located two and three levels below the street. The first level below ground is the concourse level. The second level is the upper platform level and the third level is the lower platform level.</p>
+      <p>Two separate elevators (referred to as Street and Platform) are needed to get from the street to the train platforms.</p>
+      <p>The street access to the elevator is located on Broadway between 11th Street and 12th Street.</p>
+      <p>From the street, the Street elevator will take you to the concourse level where the station agent and paid area are located. The Street elevator buttons are labeled "C" for Concourse and "S" for Street.</p>
+      <p>When you arrive at the concourse level you will need to travel approximately 60 feet to reach the Platform elevator. The Platform elevator buttons are labeled "C" for Concourse, "UL" for upper platform, and "LL" for lower platform.</p>
+      <p>Depending on your destination, the Platform elevator will take you to the upper platform or the lower platform. When the elevator arrives at either platform you will be at the far end of the platforms. Go straight to reach the center of the train boarding area.</p> ]]></entering>
+      <exiting><![CDATA[ <p>The BART trains at 12th St. Oakland City Center Station are located two and three levels below the street.</p>
+      <p>Two separate elevators (referred to as Platform and Street) are needed to get from the train platforms to the street.</p>
+      <p>Prior to 8:45 AM weekdays Fremont and San Francisco \u2013 Daly City- bound trains arrive at both the upper platform and lower platform. After 8:45 AM on weekdays Fremont and San Francisco \u2013 Daly City bound trains arrive at the lower platform only. When departing a Fremont or San Francisco - Daly City train, the elevator will be towards the front of the train at the far end of the platform. The elevator buttons are labeled "C" for concourse, "UL" for upper platform, and "LL" for lower platform.</p>
+      <p>When departing a Richmond or Pittsburg \u2013 Bay Point train you will be on the upper platform two levels below the street. When exiting the trains the elevator will be towards the rear of the train at the far end of the platform. The elevator buttons are labeled "C" for concourse, "UL" for upper platform, and "LL" for lower platform.</p> ]]></exiting>
+      <parking> <![CDATA[ <p>There's no parking at 12th St. Oakland City Center Station. The closest station with parking is <a href="http://www.bart.gov/stations/LAKE/">Lake Merritt</a>.</p> ]]></parking>
+      <fill_time><![CDATA[ ]]></fill_time>
+      <car_share><![CDATA[ ]]></car_share>
+      <lockers><![CDATA[ <p>8 electronic bicycle lockers managed by City of Oakland. For more information on these lockers, contact the City of Oakland at <a href="mailto:bikeped@oaklandnet.com">bikeped@oaklandnet.com</a> or (510) 238-3983.</p> ]]></lockers>
+      <bike_station_text><![CDATA[ ]]></bike_station_text>
+      <destinations><![CDATA[ <p>To find a destination near 12th St. Oakland City Center Station, visit the <a href="http://www.bart.gov/stations/12th/neighborhood.aspx">neighborhood section</a>.</p> ]]></destinations>
+      <transit_info><![CDATA[ <p>12th St. Oakland City Center Station is served by <a rel="external" href="http://www.actransit.org">AC Transit</a> Routes <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=1">1</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=1R">1R</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=11">11</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=12">12</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=13">13</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=14">14</a>, <a href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=15">15</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=18">18</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=19">19</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=40">40</a>, <a href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=51">51</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=63">63</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=72">72</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=72M">72M</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=72R">72R</a>, <a rel="external" href="http://www.actransit.org/maps/schedule_results.php?version_id=3&quick_line=88">88</a>; and the regional <a rel="external" href="http://transit.511.org/providers/night.aspx">All Nighter</a>. The <a rel="external" href="http://www.greyhound.com/scripts/en/TicketCenter/terminal.asp?city=892540">Greyhound</a> bus terminal located three blocks down 20th Street at San Pablo Avenue.</p>
+      <p><strong>Try BART's free trip planning service!</strong><br />For a personalized trip plan with BART and connecting transit, call the BART <a href="http://www.bart.gov/siteinfo/contact.aspx">Transit Information Center</a>. It's fast, it's easy, and it's tailored just for you!</p> ]]></transit_info>
+      <link>http://www.bart.gov/stations/12TH/index.aspx</link> 
+    </station>
+  </stations>
+  <message>
+    <legend>parking_flag: 0 = No BART parking, 1 = Yes, parking available. bike_flag: 0 = No bike racks, 1 = Yes, bike racks available. bike_station_flag: 0 = Not a bike station, 1 = Yes, station is a bike station. locker_flag: 0 = No lockers, 1 = Yes, station has lockers.</legend> 
+  </message> 
+</root>

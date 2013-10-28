@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="iso-8859-1"?><root><uri><![CDATA[http://api.bart.gov/api/bsa.aspx?cmd=bsa&orig=WOAK]]></uri><date>10/27/2013</date>
+<time>22:03:00 PM PDT</time>
+<bsa><station>M10</station>
+<type>INFORMATION</type>
+<description><![CDATA[No delays reported.]]></description>
+<sms_text><![CDATA[No delays reported.]]></sms_text></bsa><message></message></root>

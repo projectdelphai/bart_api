@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <uri><![CDATA[http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=6]]></uri>
+  <sched_num>26</sched_num>
+  <routes>
+    <route>
+      <name>Daly City - Fremont</name>
+      <abbr>DALY-FRMT</abbr>
+      <routeID>ROUTE 6</routeID>
+      <number>6</number>
+      <origin>DALY</origin>
+      <destination>FRMT</destination>
+      <direction>south</direction>
+      <color>#339933</color>
+      <holidays>0</holidays>
+      <num_stns>19</num_stns>
+      <config>
+        <station>DALY</station>
+        <station>BALB</station>
+        <station>GLEN</station>
+        <station>24TH</station>
+        <station>16TH</station>
+        <station>CIVC</station>
+        <station>POWL</station>
+        <station>MONT</station>
+        <station>EMBR</station>
+        <station>WOAK</station>
+        <station>LAKE</station>
+        <station>FTVL</station>
+        <station>COLS</station>
+        <station>SANL</station>
+        <station>BAYF</station>
+        <station>HAYW</station>
+        <station>SHAY</station>
+        <station>UCTY</station>
+        <station>FRMT</station>
+      </config>
+    </route>
+  </routes>
+  <message />
+</root>
