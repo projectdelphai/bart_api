@@ -89,7 +89,7 @@ Helping Out
 -------------
 
  1. Create an issue (optional)
- 1. Clone the codebase
+ 1. Fork the codebase
  1. Create a branch
  1. Make your changes
  1. Write tests
