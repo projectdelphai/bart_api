@@ -12,74 +12,87 @@ class BartApi():
       parsed_xml = etree.parse(raw_xml)
     return parsed_xml
 
-  def number_of_trains(self):
-    url = "http://api.bart.gov/api/bsa.aspx?cmd=count&key=%s" % (self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    train_count = xml.xpath('traincount')[0].text
-    return train_count
-
-  def elevator_status(self):
-    url = "http://api.bart.gov/api/bsa.aspx?cmd=elev&key=%s" % (self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    elevator_status = xml.xpath('bsa')[0].xpath('description')[0].text
-    return elevator_status
-
-  def get_stations(self):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=stns&key=%s" % (self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.find("stations").findall("station")
-
-  def bsa(self, stn="ALL"):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=%s&key=%s" % (stn,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.find(".//description").text
-
-  def station_info(self, station):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=%s&key=%s" % (station,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.find(".//station")
-
-  def station_access(self, station, legend="1"):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=stnaccess&orig=%s&key=%s&l=%s" % (station,self.api_key,legend)
+  def get_xml(self,url):
     raw_response = urllib.request.urlopen(url)
     xml = self.parse_response(raw_response)
     return xml
 
+  def number_of_trains(self):
+    xml = self.get_xml("http://api.bart.gov/api/bsa.aspx?cmd=count&key=%s" % (self.api_key))
+    train_count = xml.xpath('traincount')[0].text
+    return train_count
+
+  def elevator_status(self):
+    xml = self.get_xml("http://api.bart.gov/api/bsa.aspx?cmd=elev&key=%s" % (self.api_key))
+    elevator_status = xml.xpath('bsa')[0].xpath('description')[0].text
+    return elevator_status
+
+  def get_stations(self):
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=stns&key=%s" % (self.api_key))
+    stations = xml.find("stations").findall("station")
+    station_list = []
+    for station in stations:
+        station_list.append(dict(((elt.tag,elt.text) for elt in station)))
+    return station_list
+
+  def bsa(self, stn="ALL"):
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=%s&key=%s" % (stn,self.api_key))
+    return xml.find(".//description").text
+
+  def station_info(self, station):
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=stninfo&orig=%s&key=%s" % (station,self.api_key))
+    raw_station = xml.find(".//station")
+    return dict(((elt.tag,elt.text) for elt in raw_station))
+
+  def station_access(self, station, legend="1"):
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=stnaccess&orig=%s&key=%s&l=%s" % (station,self.api_key,legend))
+    return dict(((elt.tag,elt.text) for elt in xml))
+
   def etd(self, station="ALL", platform=None, direction=None):
     if station == "ALL":
-      url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=%s" % (self.api_key)
+      xml = self.get_xml("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=ALL&key=%s" % (self.api_key))
     elif platform is None:
-      url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=%s&direction=%s&key=%s" % (station,direction,self.api_key)
+      xml = self.get_xml("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=%s&direction=%s&key=%s" % (station,direction,self.api_key))
     elif direction is None:
       url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=%s&platform=%s&key=%s" % (station,platform,self.api_key)
     else:
-      url = "http://api.bart.gov/api/etd.aspx?cmd=etd&orig=%s&platform=%s&direction=%s&key=%s" % (station,platform,direction,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.findall(".//etd")
+      xml = self.get_xml("http://api.bart.gov/api/etd.aspx?cmd=etd&orig=%s&platform=%s&direction=%s&key=%s" % (station,platform,direction,self.api_key))
+    raw_etds = xml.findall(".//etd")
+    etd_list=[]
+    for etd in raw_etds:
+        raw_estimates = etd.findall("estimate")
+        estimates = []
+        for estimate in raw_estimates:
+          estimates.append(dict(((elt.tag,elt.text) for elt in estimate)))
+        raw_dict = { "destination" : etd.find("destination").text, "abbreviation" : etd.find("abbreviation").text, "estimates" : estimates }
+        etd_list.append(raw_dict)
+    return etd_list
 
   def routes(self, sched=None, date="today"):
     if sched is None:
       url = "http://api.bart.gov/api/route.aspx?cmd=routes&date=%s&key=%s" % (date,self.api_key)
     else:
-      url = "http://api.bart.gov/api/route.aspx?cmd=routes&sched=%s&key=%s" % (sched,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.findall(".//route")
+      xml = self.get_xml("http://api.bart.gov/api/route.aspx?cmd=routes&sched=%s&key=%s" % (sched,self.api_key))
+    raw_routes = xml.findall(".//route")
+    routes = []
+    for route in raw_routes:
+      routes.append(dict(((elt.tag,elt.text) for elt in route)))
+    return routes
+
 
   def route_info(self, route="all", sched=None, date="today"):
     if sched is None:
       url = "http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=%s&date=%s&key=%s" % (route,date,self.api_key)
     else:
-      url = "http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=%s&sched=%s&date=%s&key=%s" % (route,sched,date,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml.find(".//route")
+      xml = self.get_xml("http://api.bart.gov/api/route.aspx?cmd=routeinfo&route=%s&sched=%s&date=%s&key=%s" % (route,sched,date,self.api_key))
+    raw_route = xml.find(".//route")
+    raw_stations = raw_route.findall(".//station")
+    route = dict(((elt.tag,elt.text) for elt in raw_route))
+    station_list = []
+    for station in raw_stations:
+        station_list.append(station.text)
+    route['config'] = station_list
+    return route
 
   def get_item(self, item_name, xml):
     item_list = xml.findall(".//" + item_name)
@@ -92,34 +105,32 @@ class BartApi():
       return list_of_items
 
   def get_holidays(self):
-    url = "http://api.bart.gov/api/route.aspx?cmd=holiday&key=%s" % (self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
+    xml = self.get_xml("http://api.bart.gov/api/route.aspx?cmd=holiday&key=%s" % (self.api_key))
     raw_holidays = xml.findall(".//holiday")
-    return raw_holidays
+    holiday_list = []
+    for holiday in raw_holidays:
+      holiday_list.append(dict(((elt.tag,elt.text) for elt in holiday)))
+    return holiday_list
+
 
   def get_schedules(self):
-    url = "http://api.bart.gov/api/route.aspx?cmd=scheds&key=%s" % (self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
+    xml = self.get_xml("http://api.bart.gov/api/route.aspx?cmd=scheds&key=%s" % (self.api_key))
     raw_schedules = xml.findall(".//schedule")
     schedules = []
     for schedule in raw_schedules:
         id = schedule.get('id')
         effective_date = schedule.get('effectivedate')
-        schedules.append([id, effective_date])
+        schedules.append({ "id" : id, "effective_date" : effective_date})
     return schedules
 
   def get_special_schedules(self, legend="1"):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=special&key=%s&l=%s" % (self.api_key,legend)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
-    return xml
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=special&key=%s&l=%s" % (self.api_key,legend))
+    schedule_xml = xml.find('.//special_schedule')
+    xml_dict = dict(((elt.tag,elt.text) for elt in schedule_xml))
+    return xml_dict
   
   def get_station_schedule(self, station):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=stnsched&orig=%s&key=%s" % (station,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=stnsched&orig=%s&key=%s" % (station,self.api_key))
     raw_schedules = xml.findall('.//item')
     schedule_list = []
     for item in raw_schedules:
@@ -129,11 +140,9 @@ class BartApi():
 
   def get_route_schedule(self, sched='', date='today', legend="1"):
     if not sched=='':
-      url = "http://api.bart.gov/api/stn.aspx?cmd=special&sched=%s&key=%s&l=%s" % (sched,self.api_key,legend)
+      xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=special&sched=%s&key=%s&l=%s" % (sched,self.api_key,legend))
     elif sched == '':
-      url = "http://api.bart.gov/api/stn.aspx?cmd=special&date=%s&key=%s&l=%s" % (date,self.api_key,legend)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
+      xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=special&date=%s&key=%s&l=%s" % (date,self.api_key,legend))
     raw_routes = xml.findall(".//train")
     trains = {}
     for train in raw_routes:
@@ -146,9 +155,7 @@ class BartApi():
     return trains
 
   def get_fare(self, orig, dest):
-    url = "http://api.bart.gov/api/stn.aspx?cmd=fare&orig=%s&dest=%s&key=%s" % (orig,dest,self.api_key)
-    raw_response = urllib.request.urlopen(url)
-    xml = self.parse_response(raw_response)
+    xml = self.get_xml("http://api.bart.gov/api/stn.aspx?cmd=fare&orig=%s&dest=%s&key=%s" % (orig,dest,self.api_key))
     raw_fare = xml.find(".//trip")
     fare_dict = { "fare" : raw_fare.find("fare").text, "clipper_fare" : raw_fare.find(".//clipper").text }
     return fare_dict

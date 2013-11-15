@@ -41,7 +41,7 @@ class TestBartApi(unittest.TestCase):
     mock_urlopen.return_value = raw_xml
     expected = "West Oakland"
     stations = self.bart.get_stations()
-    actual = stations[1].find("name").text
+    actual = stations[1].get("name")
     self.assertEqual(expected, actual)
 
   @patch('bart_api.urllib.request.urlopen')
@@ -72,7 +72,7 @@ class TestBartApi(unittest.TestCase):
     mock_urlopen.return_value = raw_xml
     expected = "94110"
     station_info = self.bart.station_info("24TH")
-    actual = station_info.find(".//zipcode").text
+    actual = station_info.get("zipcode")
     self.assertEqual(expected, actual)
   
   @patch('bart_api.urllib.request.urlopen')
@@ -81,9 +81,9 @@ class TestBartApi(unittest.TestCase):
     with open('bart_api/test/mocks/station_access.xml') as f:
       raw_xml = f.read().encode('utf-8')
     mock_urlopen.return_value = raw_xml
-    expected = " "
+    expected = None
     station_info = self.bart.station_access("12TH", "1")
-    actual = station_info.find(".//car_share").text
+    actual = station_info.get("car_share")
     self.assertEqual(expected, actual)
 
   @patch('bart_api.urllib.request.urlopen')
@@ -94,7 +94,7 @@ class TestBartApi(unittest.TestCase):
     mock_urlopen.return_value = raw_xml
     expected = "2"
     station_info = self.bart.etd("RICH", "2", "s")
-    actual = station_info[0].find(".//platform").text
+    actual = station_info[0].get("estimates")[0].get("platform")
     self.assertEqual(expected, actual)
 
   @patch('bart_api.urllib.request.urlopen')
@@ -105,7 +105,7 @@ class TestBartApi(unittest.TestCase):
     mock_urlopen.return_value = raw_xml
     expected = "1"
     station_info = self.bart.routes("26", "today")
-    actual = station_info[0].find(".//number").text
+    actual = station_info[0].get("number")
     self.assertEqual(expected, actual)
   
   @patch('bart_api.urllib.request.urlopen')
@@ -116,18 +116,7 @@ class TestBartApi(unittest.TestCase):
       mock_urlopen.return_value = raw_xml
     expected = "BALB"
     station_info = self.bart.route_info("6", "26", "today")
-    actual = station_info.findall(".//station")[1].text
-    self.assertEqual(expected, actual)
-  
-  @patch('bart_api.urllib.request.urlopen')
-  def test_get_item(self,mock_urlopen):
-    a = Mock()
-    with open('bart_api/test/mocks/route_info.xml') as f:
-      raw_xml = f.read().encode('utf-8')
-      mock_urlopen.return_value = raw_xml
-    expected = "BALB"
-    station_info = self.bart.route_info("6", "26", "today")
-    actual = self.bart.get_item("station", station_info)[1]
+    actual = station_info.get('config')[1]
     self.assertEqual(expected, actual)
   
   @patch('bart_api.urllib.request.urlopen')
@@ -137,7 +126,7 @@ class TestBartApi(unittest.TestCase):
       raw_xml = f.read().encode('utf-8')
       mock_urlopen.return_value = raw_xml
     expected = "Presidents' Day"
-    actual = self.bart.get_holidays()[1].find('name').text
+    actual = self.bart.get_holidays()[1].get('name')
     self.assertEqual(expected, actual)
 
   @patch('bart_api.urllib.request.urlopen')
@@ -147,7 +136,7 @@ class TestBartApi(unittest.TestCase):
       raw_xml = f.read().encode('utf-8')
       mock_urlopen.return_value = raw_xml
     expected = "26"
-    actual = self.bart.get_schedules()[0][0]
+    actual = self.bart.get_schedules()[0].get('id')
     self.assertEqual(expected, actual)
   
   @patch('bart_api.urllib.request.urlopen')
@@ -157,7 +146,7 @@ class TestBartApi(unittest.TestCase):
       raw_xml = f.read().encode('utf-8')
       mock_urlopen.return_value = raw_xml
     expected = "DUBL"
-    actual = self.bart.get_special_schedules().find('.//orig').text
+    actual = self.bart.get_special_schedules().get('orig')
     self.assertEqual(expected, actual)
 
   @patch('bart_api.urllib.request.urlopen')
