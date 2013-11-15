@@ -80,10 +80,7 @@ To run the tests to make sure everything is running well, run this command in th
 
 Todo
 -----------------
-* make methods for schedules
-* figure out best way to parse xml
 * remove duplicate code into a better method
-* seamless development for others
 
 Helping Out
 -------------
@@ -98,8 +95,13 @@ Helping Out
 
 Changelog
 --------------
+0.0.3
+* made methods for all but three of the schedule methods
+* started transitioning to return dicts
+* implemented easier search for item method
+
 0.0.2
-* made methods for everythin but the schedule section
+* made methods for everything but the schedule section
 
 0.0.1
 * working through advisory information part of api

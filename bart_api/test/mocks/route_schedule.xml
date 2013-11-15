@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=routesched&route=6 ]]></uri>
+  <date>10/26/2009</date> 
+  <sched_num>26</sched_num> 
+  <route>
+    <train index="1">
+      <stop station="DALY" origTime="6:13 AM" bikeflag="1" /> 
+      <stop station="BALB" origTime="6:17 AM" bikeflag="1" /> 
+      <stop station="GLEN" origTime="6:19 AM" bikeflag="1" /> 
+      <stop station="24TH" origTime="6:22 AM" bikeflag="1" /> 
+      <stop station="16TH" origTime="6:24 AM" bikeflag="1" /> 
+      <stop station="CIVC" origTime="6:27 AM" bikeflag="1" /> 
+      <stop station="POWL" origTime="6:28 AM" bikeflag="1" /> 
+      <stop station="MONT" origTime="6:30 AM" bikeflag="1" /> 
+      <stop station="EMBR" origTime="6:32 AM" bikeflag="1" /> 
+      <stop station="WOAK" origTime="6:39 AM" bikeflag="1" /> 
+      <stop station="LAKE" origTime="6:43 AM" bikeflag="1" /> 
+      <stop station="FTVL" origTime="6:47 AM" bikeflag="1" /> 
+      <stop station="COLS" origTime="6:50 AM" bikeflag="1" /> 
+      <stop station="SANL" origTime="6:54 AM" bikeflag="1" /> 
+      <stop station="BAYF" origTime="6:58 AM" bikeflag="1" /> 
+      <stop station="HAYW" origTime="7:02 AM" bikeflag="1" /> 
+      <stop station="SHAY" origTime="7:06 AM" bikeflag="1" /> 
+      <stop station="UCTY" origTime="7:11 AM" bikeflag="1" /> 
+      <stop station="FRMT" origTime="7:16 AM" bikeflag="1" /> 
+    </train>
+    <train index="2">
+      <stop station="DALY" origTime="6:28 AM" bikeflag="1" /> 
+      <stop station="BALB" origTime="6:32 AM" bikeflag="1" /> 
+      <stop station="GLEN" origTime="6:34 AM" bikeflag="1" /> 
+      <stop station="24TH" origTime="6:37 AM" bikeflag="1" /> 
+      <stop station="16TH" origTime="6:39 AM" bikeflag="1" /> 
+      <stop station="CIVC" origTime="6:42 AM" bikeflag="1" /> 
+      <stop station="POWL" origTime="6:43 AM" bikeflag="1" /> 
+      <stop station="MONT" origTime="6:45 AM" bikeflag="1" /> 
+      <stop station="EMBR" origTime="6:47 AM" bikeflag="1" /> 
+      <stop station="WOAK" origTime="6:54 AM" bikeflag="1" /> 
+      <stop station="LAKE" origTime="6:58 AM" bikeflag="1" /> 
+      <stop station="FTVL" origTime="7:02 AM" bikeflag="1" /> 
+      <stop station="COLS" origTime="7:05 AM" bikeflag="1" /> 
+      <stop station="SANL" origTime="7:09 AM" bikeflag="1" /> 
+      <stop station="BAYF" origTime="7:13 AM" bikeflag="1" /> 
+      <stop station="HAYW" origTime="7:17 AM" bikeflag="1" /> 
+      <stop station="SHAY" origTime="7:21 AM" bikeflag="1" /> 
+      <stop station="UCTY" origTime="7:26 AM" bikeflag="1" /> 
+      <stop station="FRMT" origTime="7:31 AM" bikeflag="1" /> 
+    </train>
+    <train index="52">
+      <stop station="DALY" origTime="6:58 PM" bikeflag="1" /> 
+      <stop station="BALB" origTime="7:02 PM" bikeflag="1" /> 
+      <stop station="GLEN" origTime="7:04 PM" bikeflag="1" /> 
+      <stop station="24TH" origTime="7:07 PM" bikeflag="1" /> 
+      <stop station="16TH" origTime="7:09 PM" bikeflag="1" /> 
+      <stop station="CIVC" origTime="7:12 PM" bikeflag="1" /> 
+      <stop station="POWL" origTime="7:13 PM" bikeflag="1" /> 
+      <stop station="MONT" origTime="7:15 PM" bikeflag="1" /> 
+      <stop station="EMBR" origTime="7:17 PM" bikeflag="1" /> 
+      <stop station="WOAK" origTime="7:24 PM" bikeflag="1" /> 
+      <stop station="LAKE" origTime="7:28 PM" bikeflag="1" /> 
+      <stop station="FTVL" origTime="7:32 PM" bikeflag="1" /> 
+      <stop station="COLS" origTime="7:35 PM" bikeflag="1" /> 
+      <stop station="SANL" origTime="7:39 PM" bikeflag="1" /> 
+      <stop station="BAYF" origTime="7:43 PM" bikeflag="1" /> 
+      <stop station="HAYW" origTime="7:47 PM" bikeflag="1" /> 
+      <stop station="SHAY" origTime="7:51 PM" bikeflag="1" /> 
+      <stop station="UCTY" origTime="7:56 PM" bikeflag="1" /> 
+      <stop station="FRMT" origTime="8:01 PM" bikeflag="1" /> 
+    </train>
+  </route>
+  <message>
+    <legend>bikeflag = 1, bikes allowed. bikeflag = 0, no bikes allowed.</legend>
+    <special_schedule>
+    <![CDATA[ Starting at 9:00 pm tonight, there will be a bus bridge between Walnut Creek and Pleasant Hill due to necessary track work. <a href="http://www.bart.gov/news/articles/2010/news20100310.aspx">Read more...</a>    ]]>
+    </special_schedule>
+  </message>
+</root>

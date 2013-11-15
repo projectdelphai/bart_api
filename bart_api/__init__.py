@@ -80,3 +80,75 @@ class BartApi():
     raw_response = urllib.request.urlopen(url)
     xml = self.parse_response(raw_response)
     return xml.find(".//route")
+
+  def get_item(self, item_name, xml):
+    item_list = xml.findall(".//" + item_name)
+    if len(item_list) == 1:
+      return [item_list[0].text]
+    else:
+      list_of_items = []
+      for entry in item_list:
+          list_of_items.append(entry.text)
+      return list_of_items
+
+  def get_holidays(self):
+    url = "http://api.bart.gov/api/route.aspx?cmd=holiday&key=%s" % (self.api_key)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    raw_holidays = xml.findall(".//holiday")
+    return raw_holidays
+
+  def get_schedules(self):
+    url = "http://api.bart.gov/api/route.aspx?cmd=scheds&key=%s" % (self.api_key)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    raw_schedules = xml.findall(".//schedule")
+    schedules = []
+    for schedule in raw_schedules:
+        id = schedule.get('id')
+        effective_date = schedule.get('effectivedate')
+        schedules.append([id, effective_date])
+    return schedules
+
+  def get_special_schedules(self, legend="1"):
+    url = "http://api.bart.gov/api/stn.aspx?cmd=special&key=%s&l=%s" % (self.api_key,legend)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    return xml
+  
+  def get_station_schedule(self, station):
+    url = "http://api.bart.gov/api/stn.aspx?cmd=stnsched&orig=%s&key=%s" % (station,self.api_key)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    raw_schedules = xml.findall('.//item')
+    schedule_list = []
+    for item in raw_schedules:
+        schedule_dict = { "line" : item.get('line'), "train_head_station" : item.get('trainHeadStation'), "orig_time" : item.get('origTime'), "dest_time" : item.get('destTime'), "train_idx" : item.get('trainIdx'), "bikeflag" : item.get('bikeflag') }
+        schedule_list.append(schedule_dict)
+    return schedule_list
+
+  def get_route_schedule(self, sched='', date='today', legend="1"):
+    if not sched=='':
+      url = "http://api.bart.gov/api/stn.aspx?cmd=special&sched=%s&key=%s&l=%s" % (sched,self.api_key,legend)
+    elif sched == '':
+      url = "http://api.bart.gov/api/stn.aspx?cmd=special&date=%s&key=%s&l=%s" % (date,self.api_key,legend)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    raw_routes = xml.findall(".//train")
+    trains = {}
+    for train in raw_routes:
+        stops = {}
+        raw_stops = train.findall(".//stop")
+        for stop in raw_stops:
+            raw_dict = { "orig_time" : stop.get("origTime"), "bikeflags" : stop.get("bikeflag") }
+            stops[stop.get("station")] = raw_dict
+        trains[train.get("index")] = stops
+    return trains
+
+  def get_fare(self, orig, dest):
+    url = "http://api.bart.gov/api/stn.aspx?cmd=fare&orig=%s&dest=%s&key=%s" % (orig,dest,self.api_key)
+    raw_response = urllib.request.urlopen(url)
+    xml = self.parse_response(raw_response)
+    raw_fare = xml.find(".//trip")
+    fare_dict = { "fare" : raw_fare.find("fare").text, "clipper_fare" : raw_fare.find(".//clipper").text }
+    return fare_dict

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=special ]]></uri>
+  <holidays>
+    <holiday>
+      <name>New Year's Day (2009)</name> 
+      <date>01/01/2009</date> 
+      <schedule_type>Sunday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>Presidents' Day</name> 
+      <date>02/16/2009</date> 
+      <schedule_type>Saturday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>Memorial Day</name> 
+      <date>05/25/2009</date> 
+      <schedule_type>Sunday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>Labor Day</name> 
+      <date>09/07/2009</date> 
+      <schedule_type>Saturday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>Thanksgiving Day</name> 
+      <date>11/26/2009</date> 
+      <schedule_type>Sunday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>Christmas Day</name> 
+      <date>12/25/2009</date> 
+      <schedule_type>Sunday</schedule_type> 
+    </holiday>
+    <holiday>
+      <name>New Year's Day (2010)</name> 
+      <date>01/01/2010</date> 
+      <schedule_type>Sunday</schedule_type> 
+    </holiday>
+  </holidays>
+  <message /> 
+</root>

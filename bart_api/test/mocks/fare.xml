@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=fare&orig=12th&dest=embr ]]></uri>
+  <origin>12TH</origin> 
+  <destination>EMBR</destination> 
+  <sched_num>31</sched_num> 
+  <trip>
+    <fare>3.15</fare>
+    <discount>
+      <clipper>1.15</clipper>
+    </discount>
+  </trip>
+  <message>
+    <co2_emissions><![CDATA[ <p>CO2 emissions saved by this BART trip: <strong>8.5 pounds.</strong> <a href="http://www.bart.gov/guide/carbon.aspx">Read more</a></p> ]]></co2_emissions>
+  </message>
+</root>

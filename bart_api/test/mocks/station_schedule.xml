@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=stnsched&orig=12th&l=1 ]]></uri>
+  <date>10/26/2009</date> 
+  <sched_num>26</sched_num> 
+  <station>
+    <name>12th St. Oakland City Center</name> 
+    <abbr>12TH</abbr> 
+    <item line="ROUTE 7" trainHeadStation="MLBR" origTime="4:35 AM" destTime="5:21 AM" trainIdx="1" bikeflag="1" /> 
+    <item line="ROUTE 3" trainHeadStation="RICH" origTime="4:37 AM" destTime="5:01 AM" trainIdx="1" bikeflag="1" /> 
+    <item line="ROUTE 2" trainHeadStation="PITT" origTime="4:37 AM" destTime="5:17 AM" trainIdx="1" bikeflag="1" /> 
+    <item line="ROUTE 1" trainHeadStation="SFIA" origTime="4:42 AM" destTime="5:27 AM" trainIdx="1" bikeflag="1" /> 
+    <item line="ROUTE 4" trainHeadStation="FRMT" origTime="4:44 AM" destTime="5:20 AM" trainIdx="1" bikeflag="1" /> 
+    <item line="ROUTE 7" trainHeadStation="MLBR" origTime="4:50 AM" destTime="5:36 AM" trainIdx="2" bikeflag="1" /> 
+    ...
+    <item line="ROUTE 1" trainHeadStation="MLBR" origTime="12:19 AM" destTime="1:09 AM" trainIdx="90" bikeflag="1" /> 
+    <item line="ROUTE 4" trainHeadStation="FRMT" origTime="12:21 AM" destTime="12:57 AM" trainIdx="75" bikeflag="1" /> 
+    <item line="ROUTE 3" trainHeadStation="RICH" origTime="12:37 AM" destTime="1:04 AM" trainIdx="76" bikeflag="1" /> 
+    <item line="ROUTE 2" trainHeadStation="PITT" origTime="12:37 AM" destTime="1:20 AM" trainIdx="91" bikeflag="1" /> 
+    <item line="ROUTE 1" trainHeadStation="SFIA" origTime="12:50 AM" destTime="1:35 AM" trainIdx="91" bikeflag="1" /> 
+    <item line="ROUTE 4" trainHeadStation="FRMT" origTime="12:52 AM" destTime="1:28 AM" trainIdx="76" bikeflag="1" /> 
+  </station>
+  <message>
+    <legend>bikeflag = 1, bikes allowed. bikeflag = 0, no bikes allowed.</legend> 
+  </message>
+</root>

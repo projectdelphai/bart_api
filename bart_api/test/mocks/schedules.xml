@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=scheds ]]></uri>
+  <schedules>
+    <schedule id="26" effectivedate="09/14/2009 12:00 AM" /> 
+    <schedule id="23" effectivedate="07/01/2009 12:00 AM" /> 
+  </schedules>
+  <message /> 
+</root>

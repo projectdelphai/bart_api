@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<root>
+  <uri><![CDATA[ http://api.bart.gov/api/sched.aspx?cmd=special&l=1 ]]></uri>
+  <special_schedules>
+    <special_schedule>
+      <start_date>08/09/2009</start_date> 
+      <end_date>09/13/2009</end_date> 
+      <start_time>03:45</start_time> 
+      <end_time>19:15</end_time> 
+      <text>Weekday trains may arrive later than scheduled at the Dublin/Pleasanton station due to construction.</text> 
+      <link><![CDATA[ http://www.bart.gov/news/articles/2007/news20070705.aspx ]]></link>
+      <orig>DUBL</orig>
+      <dest>DUBL</dest> 
+      <day_of_week /> 
+      <routes_affected>ROUTE 1,ROUTE 2</routes_affected>
+    </special_schedule>
+  </special_schedules>
+  <message>
+    <legend>day_of_week: 0 = Sunday, 1 = Monday, 2 = Tuesday, 3 = Wednesday, 4 = Thursday, 5 = Friday, 6 = Saturday, blank = all days</legend> 
+  </message>
+</root>
