@@ -1,4 +1,8 @@
-import urllib.request
+try:
+  from urllib.request import urlopen
+except ImportError:
+  from urllib2 import urlopen
+
 from lxml import etree
 
 class BartApi():
@@ -13,7 +17,7 @@ class BartApi():
     return parsed_xml
 
   def get_xml(self,url):
-    raw_response = urllib.request.urlopen(url)
+    raw_response = urlopen(url)
     xml = self.parse_response(raw_response)
     return xml
 

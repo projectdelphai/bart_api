@@ -1,5 +1,9 @@
 import unittest
-from unittest.mock import patch, Mock
+try:
+  from unittest.mock import patch, Mock
+except ImportError:
+  from mock import patch, Mock
+
 from bart_api import BartApi
 from lxml import etree
 
@@ -13,7 +17,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.api_key
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_number_of_trains(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/train_count.xml') as f:
@@ -23,7 +27,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.number_of_trains()
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_elevator_status(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/elev.xml') as f:
@@ -33,7 +37,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.elevator_status()
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_stations(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/station_list.xml') as f:
@@ -44,7 +48,7 @@ class TestBartApi(unittest.TestCase):
     actual = stations[1].get("name")
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_bsa_all(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/bsa.xml') as f:
@@ -54,7 +58,7 @@ class TestBartApi(unittest.TestCase):
     actual2 = self.bart.bsa()
     self.assertEqual(expected2, actual2)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_bsa_specific(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/bsa_woak.xml') as f:
@@ -64,7 +68,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.bsa("WOAK")
     self.assertEqual(expected, actual)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_station_info(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/station_info.xml') as f:
@@ -75,7 +79,7 @@ class TestBartApi(unittest.TestCase):
     actual = station_info.get("zipcode")
     self.assertEqual(expected, actual)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_station_access(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/station_access.xml') as f:
@@ -86,7 +90,7 @@ class TestBartApi(unittest.TestCase):
     actual = station_info.get("car_share")
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_etd(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/etd.xml') as f:
@@ -97,7 +101,7 @@ class TestBartApi(unittest.TestCase):
     actual = station_info[0].get("estimates")[0].get("platform")
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_routes(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/routes.xml') as f:
@@ -108,7 +112,7 @@ class TestBartApi(unittest.TestCase):
     actual = station_info[0].get("number")
     self.assertEqual(expected, actual)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_route_infO(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/route_info.xml') as f:
@@ -119,7 +123,7 @@ class TestBartApi(unittest.TestCase):
     actual = station_info.get('config')[1]
     self.assertEqual(expected, actual)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_holidays(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/holiday.xml') as f:
@@ -129,7 +133,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.get_holidays()[1].get('name')
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_schedules(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/schedules.xml') as f:
@@ -139,7 +143,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.get_schedules()[0].get('id')
     self.assertEqual(expected, actual)
   
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_special_schedules(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/special_schedules.xml') as f:
@@ -149,7 +153,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.get_special_schedules().get('orig')
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_station_schedule(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/station_schedule.xml') as f:
@@ -159,7 +163,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.get_station_schedule("12th")[0].get("line")
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_route_schedule(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/route_schedule.xml') as f:
@@ -169,7 +173,7 @@ class TestBartApi(unittest.TestCase):
     actual = self.bart.get_route_schedule("6","today").get("1").get("DALY").get("orig_time")
     self.assertEqual(expected, actual)
 
-  @patch('bart_api.urllib.request.urlopen')
+  @patch('bart_api.urlopen')
   def test_get_fare(self,mock_urlopen):
     a = Mock()
     with open('bart_api/test/mocks/fare.xml') as f:
