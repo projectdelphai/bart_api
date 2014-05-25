@@ -76,7 +76,9 @@ class BartApi():
     if sched is None:
       url = "http://api.bart.gov/api/route.aspx?cmd=routes&date=%s&key=%s" % (date,self.api_key)
     else:
-      xml = self.get_xml("http://api.bart.gov/api/route.aspx?cmd=routes&sched=%s&key=%s" % (sched,self.api_key))
+      url = "http://api.bart.gov/api/route.aspx?cmd=routes&sched=%s&key=%s" % (sched,self.api_key)
+      
+    xml = self.get_xml(url)
     raw_routes = xml.findall(".//route")
     routes = []
     for route in raw_routes:
