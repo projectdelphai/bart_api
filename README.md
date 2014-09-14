@@ -11,7 +11,7 @@ Usage
 
 install bart_api with:
 
-    git clone github.com/projectdelphai/bart/api
+    git clone github.com/projectdelphai/bart_api
     sudo python setup.py install
 
 To create a new object:
